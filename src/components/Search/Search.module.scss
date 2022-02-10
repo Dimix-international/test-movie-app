@@ -1,0 +1,37 @@
+@import '../../mixins/global';
+
+.header {
+  background-color: #7cadee;
+  padding: 10px;
+}
+.container {
+  max-width: 1170px;
+  margin: 0 auto;
+}
+.row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  @include adaptiv-value("column-gap", 20, 10, 0);
+}
+.title, .user{
+  flex: 0 1 30%;
+  text-align: center;
+}
+.title {
+  @include adaptiv-value("font-size", 32, 20, 0);
+  line-height: 120%;
+}
+.search {
+  flex: 1 1 auto;
+  padding: 5px;
+  @include adaptiv-value("font-size", 24, 14, 0);
+  border-radius: 3px;
+}
+.user {
+  @include adaptiv-value("font-size", 20, 14, 0);
+}
+.person {
+  width: 20px;
+  height: 20px;
+}

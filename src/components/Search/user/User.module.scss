@@ -1,0 +1,27 @@
+@import '../../../mixins/global';
+
+
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 5px;
+}
+.title {
+  position: relative;
+  @media (max-width: 576px) {
+    display: none;
+  }
+  &:after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 10px solid #000;
+    position: absolute;
+    top:60%;
+    right: -15px;
+    transform: translate(0, -50%);
+  }
+}
