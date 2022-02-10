@@ -1,0 +1,12 @@
+@import '../../mixins/global';
+.title {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 20px 0;
+  @include adaptiv-value("font-size", 28, 16, 0);
+  font-weight: 500;
+  @media (max-width: 576px) {
+    padding: 10px;
+  }
+
+}

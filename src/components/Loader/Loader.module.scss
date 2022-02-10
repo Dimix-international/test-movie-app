@@ -1,0 +1,12 @@
+.loader{
+  display: block;
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 15px 0;
+  @media (max-width: 576px) {
+    padding: 10px;
+  }
+}
+.hide {
+  display: none;
+}

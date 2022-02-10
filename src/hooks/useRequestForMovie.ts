@@ -12,7 +12,7 @@ const getMovies = async (title: string, page: number): Promise<SuccessResponseTy
 export const useRequestForMovie = () => {
     const {searchState} = useSearchMovie();
 
-    const {data = {}} = useQuery(
+    const {data = {}, isFetching} = useQuery(
         ['movies', `${searchState.title}-${searchState.page}`],
         () => getMovies(searchState.title, searchState.page),
         {
@@ -22,5 +22,6 @@ export const useRequestForMovie = () => {
 
     return {
         data,
+        isFetching,
     }
 }

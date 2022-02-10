@@ -8,10 +8,11 @@ type CardType = {
 export const Card: React.FC<CardType> = React.memo(props => {
     const {data} = props;
 
+    const finalPoster = data.Poster === "N/A" ? 'https://ya1.fastfilm.net/images/poster_none.png' : data.Poster;
     return (
         <div className={s.card}>
             <div className={s.poster}>
-                <img src={data.Poster} alt="poster"/>
+                <img src={finalPoster} alt="poster"/>
             </div>
             <div className={s.info}>
                 <h6 className={s.title}>Poster: {data.Title}</h6>

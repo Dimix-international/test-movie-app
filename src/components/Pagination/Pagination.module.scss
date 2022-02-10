@@ -1,0 +1,28 @@
+.body {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.elem {
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 50%;
+  &:hover{
+    background-color: #7cadee;
+    color: #fff;
+  }
+}
+.active {
+  background-color: #7cadee;
+  color: #fff;
+}
