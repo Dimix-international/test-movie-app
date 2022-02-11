@@ -1,22 +1,23 @@
 import {ErrorType, SuccessResponseType} from "../types/types";
 import {axiosInstance, key} from "../axiosInstance/axiosInstance";
 import {useQuery} from "react-query";
-import {useSearchMovie} from "./useSearchMovie";
+import {useSearchParams} from "react-router-dom";
 
 const getMovies = async (title: string, page: number): Promise<SuccessResponseType | ErrorType> => {
     const response = await axiosInstance.get(`${key}&s=${title}&page=${page}`);
     return response.data
 }
 
-
 export const useRequestForMovie = () => {
-    const {searchState} = useSearchMovie();
+    const [searchParams, setSearchParams] = useSearchParams();
+    const title = searchParams.get('title') || '';
+    const page = searchParams.get('page') || '1';
 
     const {data = {}, isFetching} = useQuery(
-        ['movies', `${searchState.title}-${searchState.page}`],
-        () => getMovies(searchState.title, searchState.page),
+        ['movies', `${title}-${page}`],
+        () => getMovies(title, Number(page)),
         {
-            enabled: !!searchState.title,
+            enabled: !!title,
         }
     )
 

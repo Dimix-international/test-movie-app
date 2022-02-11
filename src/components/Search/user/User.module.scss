@@ -7,11 +7,10 @@
   align-items: center;
   column-gap: 5px;
 }
+
 .title {
   position: relative;
-  @media (max-width: 576px) {
-    display: none;
-  }
+
   &:after {
     content: '';
     width: 0;
@@ -20,8 +19,36 @@
     border-right: 5px solid transparent;
     border-top: 10px solid #000;
     position: absolute;
-    top:60%;
+    top: 60%;
     right: -15px;
     transform: translate(0, -50%);
+  }
+}
+
+.icon {
+  position: relative;
+}
+
+.info {
+  position: absolute;
+  bottom: -35px;
+  left: -125px;
+  box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
+  background-color: #fff;
+  width: 150px;
+  padding: 5px;
+  animation-name: panel;
+  animation-duration: 1s;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes panel {
+  0% {
+    left: 300px;
+  }
+  100% {
+    left: -125px;
   }
 }

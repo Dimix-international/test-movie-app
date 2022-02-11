@@ -1,14 +1,20 @@
 import {useEffect} from "react";
 import {useDebounce} from "../../../../hooks/useDebounce";
-import {useSearchMovie} from "../../../../hooks/useSearchMovie";
+import {useSearchParams} from "react-router-dom";
 
-export const useSetDebounceTitle = (currentMovie:string) => {
+export const useSetDebounceTitle = (currentMovie: string) => {
 
-    const {searchDispatch} = useSearchMovie()
-    const availableSearch = useDebounce({value:currentMovie, delay:500});
+    const availableSearch = useDebounce({value: currentMovie, delay: 500});
+    const [searchParams, setSearchParams] = useSearchParams();
+    const title = searchParams.get('title') || '';
+    const page = searchParams.get('page') || '1';
 
     useEffect(() => {
-        searchDispatch({type:'set-search-params', payload: {title:availableSearch, page:1}})
-    },[availableSearch, searchDispatch])
+        setSearchParams({
+            ...Object.entries(searchParams),
+            title: availableSearch,
+            page: availableSearch === title? page : '1'
+        });
+    }, [availableSearch, searchParams, setSearchParams,page,title])
 
 }
