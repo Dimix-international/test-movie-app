@@ -4,7 +4,7 @@ import {useQuery} from "react-query";
 import {useSearchParams} from "react-router-dom";
 
 const getMovies = async (title: string, page: number): Promise<SuccessResponseType | ErrorType> => {
-    const response = await axiosInstance.get(`${key}&s=${title}&page=${page}`);
+    const response = await axiosInstance.get(`?i=tt3896198&apikey=8523cbb8&s=${title}&page=${page}`);
     return response.data
 }
 
