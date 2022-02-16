@@ -23,9 +23,11 @@ function App() {
             }
             {
                  (data as SuccessResponseType).Response === 'True'
-                && <Movies films={(data as SuccessResponseType).Search}/>
+                && <>
+                    <Movies films={(data as SuccessResponseType).Search}/>
+                    <Pagination totalItemCount={(data as SuccessResponseType).totalResults} />
+                </>
             }
-            <Pagination totalItemCount={(data as SuccessResponseType).totalResults} />
         </div>
     );
 }

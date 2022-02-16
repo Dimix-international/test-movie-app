@@ -9,6 +9,7 @@ type PaginationType = {
 
 export const Pagination: React.FC<PaginationType> = React.memo(props => {
     const {totalItemCount} = props;
+
     const [,width]= useWindowSize();
 
     const pages = [];
@@ -18,13 +19,14 @@ export const Pagination: React.FC<PaginationType> = React.memo(props => {
     const title = searchParams.get('title') || '';
     const page = searchParams.get('page') || '1';
 
-    for (let i = 1; i < pageCount; i++) {
+    for (let i = 1; i < pageCount + 1; i++) {
         pages.push(i)
     }
     const portionSize = width < 576 ? 5 : 10; //количество цифр в пагинации
 
     const portionsCount = Math.ceil(pageCount / portionSize);
-    const [portionNumber, setPortionNumber] = useState(1);
+
+    const [portionNumber, setPortionNumber] = useState(Math.ceil(Number(page) / portionSize))
     const leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
     const rightPortionPageNumber = portionNumber * portionSize;
 
@@ -42,6 +44,7 @@ export const Pagination: React.FC<PaginationType> = React.memo(props => {
         });
     }
 
+    console.log(leftPortionPageNumber, rightPortionPageNumber,pages)
     return (
         <div className={s.body}>
             <div className={s.row}>
